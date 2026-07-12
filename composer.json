@@ -1,0 +1,45 @@
+{
+    "name": "webowi/symfony-monitoring-bundle",
+    "description": "Symfony bundle that ships error logs to Monitoring Webowi with near-zero configuration.",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=8.4",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "monolog/monolog": "^3.0",
+        "symfony/config": "^6.4 || ^7.0",
+        "symfony/dependency-injection": "^6.4 || ^7.0",
+        "symfony/http-kernel": "^6.4 || ^7.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.57",
+        "infection/infection": "^0.32",
+        "phpstan/phpstan": "^2.2",
+        "phpunit/phpunit": "^10"
+    },
+    "autoload": {
+        "psr-4": {
+            "Webowi\\SymfonyMonitoringBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Webowi\\SymfonyMonitoringBundle\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "infection/extension-installer": true
+        },
+        "sort-packages": true
+    },
+    "scripts": {
+        "test": "phpunit",
+        "infection": "infection --min-msi=100 --min-covered-msi=100",
+        "phpstan": "phpstan analyse",
+        "cs-fix": "php-cs-fixer fix"
+    }
+}
