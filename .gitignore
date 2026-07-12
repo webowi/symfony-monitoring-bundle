@@ -2,4 +2,6 @@
 /.phpunit.result.cache
 /infection.log
 /infection-summary.log
+/.php-cs-fixer.cache
+/.idea/
 composer.lock
