@@ -58,6 +58,7 @@ class SymfonyMonitoringExtensionTest extends TestCase
         $definition = $container->getDefinition(SymfonyMonitoringExtension::INGEST_HANDLER_SERVICE_ID);
 
         $this->assertSame(Level::Debug, $definition->getArgument(4));
+        $this->assertFalse($definition->getArgument(5));
     }
 
     #[Test]

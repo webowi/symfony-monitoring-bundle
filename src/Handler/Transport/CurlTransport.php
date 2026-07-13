@@ -33,8 +33,6 @@ final class CurlTransport implements TransportInterface
         /** @var int $statusCode */
         $statusCode = curl_getinfo($handle, \CURLINFO_RESPONSE_CODE);
 
-        curl_close($handle);
-
         if (0 !== $errno) {
             throw new TransportException(\sprintf('cURL error (%d): %s', $errno, $error));
         }

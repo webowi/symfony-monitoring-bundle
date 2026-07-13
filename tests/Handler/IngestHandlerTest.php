@@ -22,6 +22,10 @@ class IngestHandlerTest extends TestCase
         $this->transport = $this->createMock(TransportInterface::class);
     }
 
+    /**
+     * @param string[] $context
+     * @param string[] $extra
+     */
     private function buildRecord(
         Level $level = Level::Error,
         string $message = 'something broke',

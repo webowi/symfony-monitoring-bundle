@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Webowi\SymfonyMonitoringBundle\Tests\DependencyInjection;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LogLevel;
@@ -62,17 +63,32 @@ class ConfigurationTest extends TestCase
         ]]);
     }
 
-    #[Test]
-    public function explicitValuesAreRetained(): void
+    /**
+     * @return iterable<array{0: string}>
+     */
+    public static function provideValidLevels(): iterable
+    {
+        yield [LogLevel::DEBUG];
+        yield [LogLevel::INFO];
+        yield [LogLevel::NOTICE];
+        yield [LogLevel::WARNING];
+        yield [LogLevel::ERROR];
+        yield [LogLevel::CRITICAL];
+        yield [LogLevel::ALERT];
+        yield [LogLevel::EMERGENCY];
+    }
+
+    #[Test, DataProvider('provideValidLevels')]
+    public function explicitValuesAreRetained(string $level): void
     {
         $config = $this->process([[
             'url'     => 'https://example.test',
             'api_key' => 'key',
-            'level'   => LogLevel::WARNING,
+            'level'   => $level,
         ]]);
 
         $this->assertSame('https://example.test', $config['url']);
         $this->assertSame('key', $config['api_key']);
-        $this->assertSame(LogLevel::WARNING, $config['level']);
+        $this->assertSame($level, $config['level']);
     }
 }
