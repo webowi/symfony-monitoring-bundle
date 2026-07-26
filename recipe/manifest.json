@@ -2,6 +2,10 @@
     "copy-from-recipe": {
         "config/": "%CONFIG_DIR%/"
     },
+    "env": {
+        "MONITORING_WEBOWI_URL": "",
+        "MONITORING_WEBOWI_API_KEY": ""
+    },
     "post-install-output": [
         "A config/packages/symfony_monitoring.yaml file has been added with placeholder values.",
         "",

@@ -6,9 +6,9 @@ namespace Webowi\SymfonyMonitoringBundle\Handler\Transport;
 
 final class CurlTransport implements TransportInterface
 {
-    private const int CONNECT_TIMEOUT_MS = 200;
+    private const CONNECT_TIMEOUT_MS = 200;
 
-    private const int TIMEOUT_MS = 300;
+    private const TIMEOUT_MS = 300;
 
     public function send(string $url, string $apiKey, string $jsonPayload): void
     {
