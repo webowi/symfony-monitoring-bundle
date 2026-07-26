@@ -14,7 +14,7 @@ use Webowi\SymfonyMonitoringBundle\Handler\IngestHandler;
 
 final class SymfonyMonitoringExtension extends Extension implements PrependExtensionInterface
 {
-    public const string INGEST_HANDLER_SERVICE_ID = 'symfony_monitoring.ingest_handler';
+    public const INGEST_HANDLER_SERVICE_ID = 'symfony_monitoring.ingest_handler';
 
     public function load(array $configs, ContainerBuilder $container): void
     {
