@@ -19,6 +19,11 @@ symfony_monitoring:
 
 Get your project's `url` and `api_key` from your Monitoring Webowi project's ingestion-key page.
 
+> **Running in Docker?** `localhost` inside your app's container does not reach a Monitoring
+> Webowi instance running in a sibling container/stack. Use `http://host.docker.internal:<port>/...`
+> (Docker Desktop on Mac/Windows) instead, or the instance's container/service name if both
+> stacks share a Docker network.
+
 That's it — no `monolog.yaml` wiring needed. The bundle registers the full handler chain (including a `fingers_crossed` buffer so the full DEBUG-and-up context leading up to an error is sent, not just the error line itself) automatically.
 
 ## Configuration reference
